@@ -37,6 +37,7 @@ const Carts = () => {
 
   const [newCart, setNewCart] = useState({
     userId: 0,
+    total: 0,
     products: [{ productId: 0, quantity: 0 }],
   });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -49,7 +50,7 @@ const Carts = () => {
   const handleAddCart = async () => {
     if (
       newCart.userId <= 0 ||
-      newCart.products[0].productId <= 0 ||
+      newCart.total <= 0 ||
       newCart.products[0].quantity <= 0
     ) {
       setErrorMessage("Iltimos, barcha maydonlarni to‘g‘ri to‘ldiring!");
@@ -58,6 +59,7 @@ const Carts = () => {
     try {
       const payload = {
         userId: Number(newCart.userId),
+        total: Number(newCart.total),
         products: newCart.products.map((p) => ({
           productId: Number(p.productId),
           quantity: Number(p.quantity),
@@ -66,7 +68,7 @@ const Carts = () => {
       console.log("POST so‘rovi yuborilmoqda:", payload);
       const response = await addCart(payload).unwrap();
       console.log("API javobi:", response);
-      setNewCart({ userId: 0, products: [{ productId: 0, quantity: 0 }] });
+      setNewCart({ userId: 0, total: 0, products: [{ productId: 0, quantity: 0 }] });
       setErrorMessage(null);
       setSuccessMessage('Savat muvaffaqiyatli qo‘shildi!');
       refetch();
@@ -79,6 +81,7 @@ const Carts = () => {
   const handleEditCart = (cart: Cart) => {
     setNewCart({
       userId: cart.userId,
+      total: cart.total,
       products: cart.products,
     });
     setEditingCartId(cart.id);
@@ -93,7 +96,7 @@ const Carts = () => {
     }
     if (
       newCart.userId <= 0 ||
-      newCart.products[0].productId <= 0 ||
+      newCart.total <= 0 ||
       newCart.products[0].quantity <= 0
     ) {
       setErrorMessage("Iltimos, barcha maydonlarni to‘g‘ri to‘ldiring!");
@@ -102,13 +105,14 @@ const Carts = () => {
     try {
       const payload = {
         userId: Number(newCart.userId),
+        total: Number(newCart.total),
         products: newCart.products.map((p) => ({
           productId: Number(p.productId),
           quantity: Number(p.quantity),
         })),
       };
       await updateCart({ id: editingCartId, ...payload }).unwrap();
-      setNewCart({ userId: 0, products: [{ productId: 0, quantity: 0 }] });
+      setNewCart({ userId: 0, total: 0, products: [{ productId: 0, quantity: 0 }] });
       setEditingCartId(null);
       setErrorMessage(null);
       setSuccessMessage('Savat muvaffaqiyatli yangilandi!');
@@ -159,9 +163,16 @@ const Carts = () => {
         <div className="flex flex-col sm:flex-row gap-2">
           <input
             type="number"
-            placeholder="Foydalanuvchi ID kiriting"
+            placeholder="Foydalanuvchi ID kiriting (masalan, 1)"
             value={newCart.userId === 0 && !editingCartId ? '' : newCart.userId}
             onChange={(e) => setNewCart({ ...newCart, userId: Number(e.target.value) })}
+            className="border p-2 rounded flex-1"
+          />
+          <input
+            type="number"
+            placeholder="Umumiy narxni kiriting"
+            value={newCart.total === 0 && !editingCartId ? '' : newCart.total}
+            onChange={(e) => setNewCart({ ...newCart, total: Number(e.target.value) })}
             className="border p-2 rounded flex-1"
           />
           <input
@@ -188,7 +199,7 @@ const Carts = () => {
               </button>
               <button
                 onClick={() => {
-                  setNewCart({ userId: 0, products: [{ productId: 0, quantity: 0 }] });
+                  setNewCart({ userId: 0, total: 0, products: [{ productId: 0, quantity: 0 }] });
                   setEditingCartId(null);
                 }}
                 className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
@@ -219,7 +230,7 @@ const Carts = () => {
                 className="flex items-center justify-between p-4 border-b hover:bg-gray-50"
               >
                 <span>
-                  Foydalanuvchi ID: {cart.userId}, Jami: ${cart.total}
+                  Foydalanuvchi ID: {cart.userId}, Jami: ${cart.total}, Miqdori: {cart.products[0].quantity}
                 </span>
                 <div className="flex gap-2">
                   <button
