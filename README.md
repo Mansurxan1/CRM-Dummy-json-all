@@ -1,136 +1,141 @@
-E-Commerce Dashboard
+# 🛍 E-Commerce Dashboard
 
-E-Commerce Dashboard — bu React va Redux Toolkit yordamida qurilgan, mahsulotlar, postlar, kommentlar, savatlar va vazifalarni boshqarish uchun mo‘ljallangan zamonaviy veb-ilova. U foydalanuvchilarga ma’lumotlarni osongina qo‘shish, tahrirlash, o‘chirish va sahifalash imkonini beradi. Loyiha TypeScript va Tailwind CSS dan foydalanadi, bu esa kod sifatini va UI dizaynini yuqori darajada ushlab turadi.
-✨ Xususiyatlar
+**E-Commerce Dashboard** — bu zamonaviy React + Redux Toolkit asosidagi admin panel bo‘lib, mahsulotlar, postlar, kommentlar, savatlar va vazifalarni boshqarish imkonini beradi. Ilova TypeScript va Tailwind CSS yordamida ishlab chiqilgan.
 
-Mahsulotlar boshqaruvi:
-Yangi mahsulot qo‘shish (nomi, narxi, tavsifi).
-Mavjud mahsulotlarni tahrirlash va o‘chirish.
-Narx maydonida foydalanuvchi uchun qulay placeholder va validatsiya.
+---
 
+## ✨ Xususiyatlar
 
-Postlar boshqaruvi:
-Postlar qo‘shish, tahrirlash va o‘chirish (sarlavha, matn, foydalanuvchi ID).
-Ma’lumotlarni sahifalash orqali tartibli ko‘rsatish.
+### 📦 Mahsulotlar boshqaruvi:
+- Yangi mahsulot qo‘shish (nomi, narxi, tavsifi)
+- Tahrirlash va o‘chirish
+- Narx maydoni uchun qulay placeholder va validatsiya
 
+### 📝 Postlar boshqaruvi:
+- Sarlavha, matn va foydalanuvchi ID bilan qo‘shish
+- Tahrirlash va o‘chirish
+- Sahifalash bilan tartibli ko‘rsatish
 
-Kommentlar boshqaruvi:
-Kommentlar qo‘shish (matn, post ID, foydalanuvchi ID).
-Kommentlarni tahrirlash va o‘chirish.
+### 💬 Kommentlar boshqaruvi:
+- Matn, post ID va user ID bilan komment qo‘shish
+- Tahrirlash va o‘chirish
 
+### 🛒 Savatlar boshqaruvi:
+- Foydalanuvchi ID, narx, miqdor bilan savat qo‘shish
+- Narx va miqdorni tahrirlash
+- Savatni o‘chirish
 
-Savatlar boshqaruvi:
-Savat qo‘shish (foydalanuvchi ID, umumiy narx, miqdor).
-Narx va miqdor maydonlarini tahrirlash imkoniyati.
-Savatlarni o‘chirish.
+### ✅ Vazifalar boshqaruvi:
+- Matn, holat, foydalanuvchi ID bilan vazifa qo‘shish
+- Holatni o‘zgartirish (bajarildi/bajarilmadi)
+- Tahrirlash va o‘chirish
 
+### 🌟 Foydalanuvchi tajribasi:
+- 0 o‘rniga aniq placeholderlar
+- Tailwind CSS bilan responsive UI
+- Xato va muvaffaqiyat xabarlari
 
-Vazifalar boshqaruvi:
-Vazifa qo‘shish (matn, holat, foydalanuvchi ID).
-Vazifalarni tahrirlash (bajarildi/bajarilmadi) va o‘chirish.
+### 🔌 API integratsiyasi:
+- **Redux Toolkit Query** orqali tezkor va real vaqtli so‘rovlar
+- `refetch` funksiyasi orqali avtomatik yangilanish
 
+### 📄 Sahifalash:
+- Har bir bo‘limda qulay navigatsiya uchun sahifalash
 
-Foydalanuvchi tajribasi:
-Raqamli maydonlarda 0 ko‘rinmaydi, o‘rniga aniq placeholderlar.
-Xato va muvaffaqiyat xabarlari bilan qulay interfeys.
-Tailwind CSS yordamida zamonaviy va javob beruvchan dizayn.
+---
 
+## 📋 Texnologiyalar
 
-API integratsiyasi:
-Redux Toolkit Query yordamida tezkor va samarali API so‘rovlari.
-Ma’lumotlarni real vaqtda yangilash (refetch).
+- **Frontend:** React 18, TypeScript  
+- **State Management:** Redux Toolkit, RTK Query  
+- **Styling:** Tailwind CSS  
+- **API:** REST API (`dummyjson.com`)  
+- **Linting & Format:** ESLint, Prettier  
 
+---
 
-Sahifalash:
-Har bir bo‘limda ma’lumotlarni sahifalash orqali qulay navigatsiya.
+## 🚀 O‘rnatish
 
+1. Repozitoriyani klonlash:
 
-
-📋 Texnologiyalar
-
-Frontend: React 18, TypeScript
-State Management: Redux Toolkit, RTK Query
-Styling: Tailwind CSS
-API: REST API (masalan, JSONPlaceholder yoki maxsus API)
-Linter va Formatter: ESLint, Prettier
-
-🚀 O‘rnatish
-Loyihani mahalliy muhitda ishga tushirish uchun quyidagi qadamlarni bajaring:
-1. Repozitoriyani klonlash
+```bash
 git clone https://github.com/Mansurxan1/CRM-Dummy-json-all.git
 cd CRM-Dummy-json-all
+Paketlarni o‘rnatish:
 
-2. Kerakli paketlarni o‘rnatish
+bash
+Copy
+Edit
 npm install
+Loyihani ishga tushirish:
 
-3. Loyihani ishga tushirish
-npm start
+bash
+Copy
+Edit
+npm run dev
+📍 Ilova ochiladi: http://localhost:5173
 
-Ilova http://localhost:5173 manzilida ochiladi.
-4. API sozlamalari
+API sozlamasi:
 
-Loyiha RTK Query orqali API bilan ishlaydi. API manzilingizni src/store/features/api/apiSlice.ts faylida sozlang:export const apiSlice = createApi({
+src/store/features/api/apiSlice.ts faylida baseUrl ni sozlang:
+
+ts
+Copy
+Edit
+export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/' }),
   ...
 });
-
-
-
 🛠 Foydalanish
+📦 Mahsulotlar:
+“Yangi Mahsulot” formasini to‘ldiring
 
-Mahsulotlar bo‘limi:
-“Yangi Mahsulot” formasida nom, narx va tavsifni kiriting.
-“Tahrirlash” tugmasi orqali mavjud mahsulotni o‘zgartiring.
+Tahrirlash tugmasi orqali o‘zgartiring
 
+📝 Postlar:
+Sarlavha, matn, user ID bilan yangi post yarating
 
-Postlar bo‘limi:
-Sarlavha, matn va foydalanuvchi ID kiritib yangi post qo‘shing.
-Sahifalash tugmalari yordamida postlarni ko‘ring.
+Sahifalash yordamida navigatsiya qiling
 
+💬 Kommentlar:
+Matn, post ID va user ID bilan komment qo‘shing
 
-Kommentlar bo‘limi:
-Komment matni, post ID va foydalanuvchi ID bilan komment qo‘shing.
-“O‘chirish” tugmasi orqali keraksiz kommentlarni olib tashlang.
+O‘chirish tugmasi orqali olib tashlang
 
+🛒 Savatlar:
+Foydalanuvchi ID, narx va miqdor kiriting
 
-Savatlar bo‘limi:
-Foydalanuvchi ID, umumiy narx va miqdor kiritib savat qo‘shing.
-“Tahrirlash” orqali narx va miqdorlarni yangilang.
+Tahrirlash orqali o‘zgartiring
 
+✅ Vazifalar:
+Vazifa matni, holati, user ID kiriting
 
-Vazifalar bo‘limi:
-Vazifa matni, holati (bajarildi/bajarilmadi) va foydalanuvchi ID kiritib vazifa qo‘shing.
-Vazifalarni tahrirlash yoki o‘chirish mumkin.
-
-
+Holatni bajargan sifatida belgilang yoki o‘chiring
 
 📸 Skrinshotlar
+🔽 Skrinshotlarni loyihangizdan yuklab qo‘shing:
 
+📦 Mahsulotlar
 
+🛒 Savatlar
+(shaxsiy skrinshotlarni bu yerga joylashingiz mumkin)
 
-Mahsulotlar
-Savatlar
-
-
-
-
-
-
-
-(Skrinshotlarni o‘zingizning loyihangizdan qo‘shishingiz mumkin)
 🤝 Hissadorlik
-Loyihaga hissa qo‘shmoqchi bo‘lsangiz:
+Siz ham loyiha rivojiga hissa qo‘shishingiz mumkin:
 
-Repozitoriyani fork qiling.
-Yangi branch yarating: git checkout -b feature/your-feature.
-O‘zgarishlarni kiriting va commit qiling: git commit -m "Add your feature".
-Branch’ni push qiling: git push origin feature/your-feature.
-Pull Request oching.
+bash
+Copy
+Edit
+# Fork qiling
+git checkout -b feature/your-feature
+git commit -m "Add your feature"
+git push origin feature/your-feature
+🔃 So‘ngra Pull Request oching.
 
 📬 Aloqa
-Savollar yoki takliflar uchun:
-Telegram: https://t.me/mansurxan1
+Savol va takliflar uchun:
 
+📩 Telegram: @mansurxan1
 
-⭐ Loyiha sizga yoqdimi? Repozitoriyga yulduzcha qo‘ying va do‘stlaringiz bilan ulashing!
-
+⭐ Yoqdimi?
+Repozitoriyga ⭐ yulduzcha qo‘ying va do‘stlaringiz bilan ulashing!
