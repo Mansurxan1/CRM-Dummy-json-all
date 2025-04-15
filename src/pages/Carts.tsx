@@ -166,18 +166,6 @@ const Carts = () => {
           />
           <input
             type="number"
-            placeholder="Mahsulot ID kiriting"
-            value={newCart.products[0].productId === 0 && !editingCartId ? '' : newCart.products[0].productId}
-            onChange={(e) =>
-              setNewCart({
-                ...newCart,
-                products: [{ ...newCart.products[0], productId: Number(e.target.value) }],
-              })
-            }
-            className="border p-2 rounded flex-1"
-          />
-          <input
-            type="number"
             placeholder="Miqdorini kiriting"
             value={newCart.products[0].quantity === 0 && !editingCartId ? '' : newCart.products[0].quantity}
             onChange={(e) =>
@@ -231,10 +219,7 @@ const Carts = () => {
                 className="flex items-center justify-between p-4 border-b hover:bg-gray-50"
               >
                 <span>
-                  Foydalanuvchi ID: {cart.userId}, Jami: ${cart.total}, Mahsulotlar:{' '}
-                  {cart.products
-                    .map((p) => `ID: ${p.productId}, Miqdor: ${p.quantity}`)
-                    .join(', ')}
+                  Foydalanuvchi ID: {cart.userId}, Jami: ${cart.total}
                 </span>
                 <div className="flex gap-2">
                   <button
